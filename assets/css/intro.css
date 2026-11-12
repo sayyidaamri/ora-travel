@@ -1,0 +1,629 @@
+/* ORA Travel — group D "introduce" templates: tour detail, itinerary, country detail, place/hotel/restaurant lists.
+   Numbers read from the reference introduce.css / sequence.css / list.css / media.css. */
+.page-intro { --theme: #009bdf; --theme-rgb: 0, 155, 223; --wt: 200; }
+.page-itin { --theme: #57aded; --theme-rgb: 87, 173, 237; }
+.list-place { --theme: #58bec7; --theme-rgb: 88, 190, 199; }
+.list-hotel { --theme: #ecd05c; --theme-rgb: 236, 208, 92; }
+.list-restaurant { --theme: #ed7d56; --theme-rgb: 237, 125, 86; }
+.page-intro h1, .page-intro h2, .page-intro h3 { font-weight: inherit; }
+.page-intro .ic { display: inline-block; vertical-align: middle; }
+.page-intro .soon-note { min-height: 0; font-size: 12px; line-height: 18px; color: #fff; }
+.page-intro .soon-note:empty { display: none; }
+
+/* ------------------------------------------------------------------ hero (bannerBox) */
+.page-intro .introduceBox { margin: 0 auto; padding: 0 0 50px; }
+.page-itin .introduceBox, .page-list .introduceBox { padding: 0; }
+.page-intro .introduceBox.fixed { position: fixed; top: 0; left: 0; right: 0; z-index: 11; }
+.bannerBox { position: relative; width: 100%; height: calc(100vh + 50px); background-size: cover; background-attachment: fixed; background-position: center; overflow: hidden; }
+.bannerTitle { position: absolute; left: 0; right: 0; bottom: 50px; z-index: 4; }
+.bannerTitle .seqTitle { position: absolute; bottom: 65px; left: 25%; right: 25%; text-align: center; color: #fff; z-index: 3; }
+.seqTitle .titleBox { position: relative; display: inline-block; padding: 0 30px 20px; }
+.seqTitle .titleBox::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; width: 100%; height: 5px; margin: 0 auto; background: #fff; }
+.seqTitle .subTitle { position: absolute; top: -30px; left: 0; font: 400 16px/22px var(--f-han); white-space: nowrap; }
+.seqTitle .mainTitle { display: flex; align-items: center; font: 200 32px/32px var(--f-han); }
+.seqTitle .mainTitle span { display: block; text-align: left; }
+.bannerTitle .seqNews { position: absolute; height: 10px; bottom: 65px; left: 40px; right: 40px; color: #fff; font-family: var(--f-han); font-weight: 200; z-index: 3; }
+.seqNews .seqLine { position: absolute; bottom: 0; left: 125px; right: 70px; height: 1px; background: #fff; opacity: .5; }
+.seqNews .natureBox { position: absolute; top: -13px; left: 0; font-size: 24px; line-height: 30px; font-weight: 300; }
+.natureBox .temperture { position: relative; display: inline-block; padding: 0 10px 0 0; vertical-align: bottom; }
+.natureBox .temperture::after { content: ""; position: absolute; top: 4px; right: 0; bottom: 2px; width: 1px; background: rgba(255, 255, 255, .5); }
+.natureBox .weather { position: relative; top: -4px; display: inline-block; padding: 0 0 0 6px; vertical-align: bottom; }
+.natureBox .weather .ic { width: 38px; height: 25px; }
+.natureBox .capital { margin: -2px -20px 0; font: 400 13px/16px var(--f-han); text-align: center; }
+.seqNews .timeBox { position: absolute; top: -2px; right: 0; font-size: 24px; line-height: 30px; font-weight: 300; }
+.scrollDown { position: absolute; left: 50%; bottom: 20px; width: 16px; height: 23px; margin: 0 0 0 -8px; border: 2px solid #fff; border-radius: 2px; box-sizing: border-box; z-index: 5; }
+.scrollDown::after { content: ""; position: absolute; top: 3px; left: 5px; width: 2px; height: 3px; background: #fff; animation: moveDownSpot 1000ms infinite; }
+@keyframes moveDownSpot { from { opacity: 1; top: 3px; } to { opacity: 0; top: 15px; } }
+.seqMask { position: absolute; bottom: 0; left: 0; right: 0; height: 222px; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .5)); z-index: 3; pointer-events: none; }
+.seqStartBg { position: absolute; inset: 0; overflow: hidden; background-color: var(--theme); z-index: 2; }
+.bannerBox .seqStartBg { background-color: #009bdf; }
+.bannerBox .seqStartBg.open { bottom: 100%; opacity: .8; transition: bottom 600ms 1200ms linear, opacity 600ms linear; }
+
+/* GO letters */
+.goTextA { position: absolute; top: 0; left: 0; right: 0; width: 80%; height: 80vh; max-width: 800px; padding-top: 5%; margin: auto; text-align: center; overflow: hidden; font-size: 0; }
+.goTextA::after { content: ""; display: inline-block; vertical-align: middle; height: 100%; }
+.goTextA > div { position: relative; display: inline-block; vertical-align: middle; width: 17%; padding-bottom: 37%; margin: 0 1%; overflow: hidden; }
+.goTextA span { position: absolute; left: 0; right: 0; display: block; }
+.goTextA svg { display: block; width: 100%; height: 100%; }
+.goTextA text { font: 700 240px var(--f-yan); fill: rgba(255, 255, 255, .62); }
+.goTextA > div:nth-child(1) span { top: 100%; bottom: -100%; }
+.goTextA > div:nth-child(2) span { top: -100%; bottom: 100%; }
+.seqStartBg.open .goTextA > div:nth-child(1) span, .seq-in .goTextA > div:nth-child(1) span, .ip-seq.show > .seqBoxComplex > .goTextA > div:nth-child(1) span { top: 0; bottom: 0; transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.seqStartBg.open .goTextA > div:nth-child(2) span, .seq-in .goTextA > div:nth-child(2) span, .ip-seq.show > .seqBoxComplex > .goTextA > div:nth-child(2) span { top: 0; bottom: 0; transition: all 500ms 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+/* "Schedule — Daily plan GO!" pin */
+.planMaxBox { position: fixed; top: 32px; right: 32px; width: 192px; height: 60px; padding: 6px 0 0 65px; box-sizing: border-box; background: #fff; border: 1px solid #cfd4d8; border-radius: 4px 0 4px 4px; z-index: 9; line-height: 22px; transition: opacity 300ms; }
+.planMaxBox::after { content: ""; position: absolute; top: -1px; right: -1px; border-style: solid; border-width: 0 18px 18px 0; border-color: transparent #fff #d9dee2 transparent; }
+.planMaxBox > a { position: absolute; inset: 0; z-index: 3; }
+.planMaxBox .pm-ic { position: absolute; top: 9px; left: 9px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #009bdf; color: #fff; border-radius: 2px; }
+.planMaxBox .pm-ic svg { width: 20px; height: 20px; }
+.planMaxBox .subTitle { font: 200 18px/22px var(--f-han); color: #009bdf; }
+.planMaxBox .mainTitle { font: 400 18px/22px var(--f-han); color: #000; }
+.planMaxBox .mainTitle span { color: #009bdf; }
+.planMaxBox:hover .pm-ic { background: #0071a3; }
+.planMaxBox.hide { opacity: 0; visibility: hidden; }
+
+/* ------------------------------------------------------------------ feature blocks */
+.featureShow { position: relative; margin-top: -50px; background: #f5f4f0; }
+.featureShowBox { display: table; position: relative; width: 80%; max-width: 1020px; margin: 0 auto; text-align: center; z-index: 5; }
+.featureShowBox .photo, .featureShowBox .featureShowBox_content { width: 50%; }
+.featureShowBox .photo { position: relative; left: 25%; float: left; padding: 0 0 50%; background: #f8f8f8; }
+.featureShowBox .photo div { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; }
+.featureShowBox .featureShowBox_content { position: relative; right: 25%; float: right; padding: 0 0 50%; background: #fff; z-index: 1; }
+.featureShow.element .photo { left: 0; transition: all 400ms var(--ease-in); }
+.featureShow.element .photo div, .featureShowBox .photo.elementMobile div { opacity: 1; transition: all 600ms 600ms linear; }
+.featureShow.element .featureShowBox_content { right: 0; transition: all 400ms var(--ease-in); }
+.featureShowBox_content .contentWrap { width: 90%; margin: 0 auto; }
+.featureShowBox_content .contentTitle { position: absolute; top: 50%; width: 90%; margin-top: -120px; font-family: var(--f-han); font-weight: 200; }
+.contentTitle .mainTitle { display: block; color: #000; font-size: 32px; line-height: 36px; }
+.contentTitle .subTitle { display: block; color: #a6a6a6; font-size: 36px; line-height: 36px; padding-top: 5px; }
+.featureShowBox_content .contentText { position: absolute; bottom: 80px; width: 90%; color: #717171; text-align: left; font: 400 13.5px/22px var(--f-han); }
+.featureShowBox_content .contentBtn { position: absolute; left: 50%; bottom: 30px; width: 130px; margin: 0 0 0 -65px; }
+.contentBtn a { display: block; font: 600 13px/34px var(--f-han); text-align: center; color: #fff; background: rgba(244, 172, 76, 1); transition: background-color 200ms var(--ease-in); }
+.contentBtn a:hover { color: #fff; background: rgba(244, 172, 76, .8); }
+.featureShowPhoto { position: relative; width: 100%; margin-top: -50px; padding-bottom: 55%; background-size: cover; background-attachment: fixed; background-position: center; z-index: 1; }
+.featureShowPhoto::before, .featureShowPhoto::after { content: ""; position: absolute; left: 0; right: 0; height: 120px; z-index: 3; }
+.featureShowPhoto::before { top: 0; background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)); }
+.featureShowPhoto::after { bottom: 0; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .2)); }
+.featureShowPhoto_slogan { position: absolute; top: 50%; left: 10%; margin: -50px 0 0; color: #fff; font: 200 42px/50px var(--f-han); z-index: 4; }
+
+/* ------------------------------------------------------------------ introduce menu (sticky) */
+.introduceInfo { width: 100%; margin: 0 auto; background: #fff; }
+.introduceMenu { position: relative; height: 90px; padding: 0 0 10px; margin: 0 auto; background: #fff; }
+.introduceMenu.introduceMenuFixed { position: fixed; top: 0; left: 0; right: 0; z-index: 11; box-shadow: 0 1px 0 rgba(0, 0, 0, .04); }
+.introduceMenu_Wrap { position: absolute; left: 300px; right: 20px; height: 90px; margin: auto; }
+.introduceMenu_Wrap .menuPush, .introduceMenu_Wrap .introMenu { display: inline-block; vertical-align: middle; }
+.introduceMenu_Wrap .menuPush { position: relative; width: 44%; max-width: 490px; min-width: 480px; height: 90px; color: #fff; background: var(--theme); }
+.menuPush::before, .menuPush::after { content: ""; position: absolute; top: 0; width: 0; height: 0; border-style: solid; }
+.menuPush::before { left: -80px; border-width: 0 0 90px 80px; border-color: transparent transparent var(--theme) transparent; }
+.menuPush::after { right: -80px; border-width: 90px 80px 0 0; border-color: var(--theme) transparent transparent transparent; }
+.menuPushBox { display: table; height: 90px; }
+.menuPush .push_tourname, .menuPush .push_price { display: table-cell; vertical-align: middle; font-family: var(--f-han); font-weight: 200; }
+.menuPush .push_tourname { position: relative; padding: 18px 40px 0 20px; font-size: 21px; line-height: 26px; }
+.menuPush .push_tourname.noBack { padding: 0 40px 0 20px; }
+.menuPush .push_tourname .tn { display: inline-block; max-height: 2.55em; overflow: hidden; }
+.menuPush .push_tourname a { position: absolute; inset: 0; z-index: 9; }
+.menuPush .push_tourname samp { position: absolute; top: 0; left: 20px; padding: 0 10px; font: 400 12px/18px var(--f-han); color: var(--theme); background: #fff; border-radius: 0 0 4px 4px; white-space: nowrap; }
+.menuPush .push_price { position: relative; min-width: 160px; padding: 0 0 5px 40px; font-size: 17px; line-height: 22px; color: #fff; white-space: nowrap; }
+.menuPush .push_price::after { content: ""; position: absolute; left: 0; top: 18px; bottom: 16px; width: 1px; background: rgba(0, 0, 0, .2); }
+.menuPush .nowprice { font-size: 12px; color: #fff; margin: 0 0 -2px; font-weight: 400; }
+.menuPush .price { font-size: 17px; font-weight: 400; }
+.introduceMenu_Wrap .introMenu { float: right; margin: 15px 0 0; background: #fff; }
+.introMenu ul, .introMenu .share { display: table-cell; vertical-align: middle; }
+.introMenu ul li { display: inline-block; margin: 20px; }
+.introMenu ul li a { color: #6c6c6c; font: 300 14px/22px var(--f-han); transition: color 200ms; }
+.introMenu ul li a:hover, .introMenu ul li.on a { color: var(--theme); }
+.introMenu .share { padding: 20px; }
+.introMenu .fb { display: block; color: var(--theme); font: 600 24px/22px var(--f-han); }
+.introMenu .fb:hover { color: var(--theme); opacity: .7; }
+
+/* ------------------------------------------------------------------ local info / highlights / more-info tabs */
+.introduceInfoBox { padding-top: 150px; margin: 0 auto; background: #fff; }
+.introduce_content { width: 80%; max-width: 990px; margin: 0 auto; }
+.localInfo { position: relative; z-index: 3; width: 465px; float: left; }
+.localinfo_container_title, .tourexplain_title { position: relative; min-height: 55px; }
+.localinfo_container_title::before { content: ""; position: absolute; top: 0; left: 40px; width: 1px; height: 100px; background: #000; z-index: 2; }
+.localinfo_container_title .ic, .tourexplain_title svg { width: 18px; height: 18px; color: #009bdf; vertical-align: middle; }
+.localinfo_container_title .titleText, .tourexplain_title .titleText { display: inline; padding: 0 0 0 30px; font: 300 18px/22px var(--f-han); vertical-align: middle; }
+.localinfo_container { min-height: 500px; padding: 0 0 100px; color: #fff; background: #009bdf; }
+.localinfo_container_useful { font-size: 14px; padding: 25px 50px; }
+.localinfo_container ul { width: 90%; margin: 30px auto; text-align: center; }
+.localinfo_container ul::after, .moreInfo_content ul::after { content: ""; display: table; clear: both; }
+.localinfo_container li { float: left; width: 33.3%; padding: 30px 0; font-family: var(--f-han); font-weight: 300; }
+.localinfo_container .title, .moreInfo_content li .title { height: 20px; overflow: hidden; margin: 0 0 10px; font-size: 14px; line-height: 20px; }
+.localinfo_container .icon, .moreInfo_content li .icon { height: 40px; overflow: hidden; margin: 0 0 10px; display: flex; align-items: center; justify-content: center; }
+.localinfo_container .icon svg { max-height: 36px; width: auto; height: 32px; color: #fff; }
+.localinfo_container .text, .moreInfo_content li .text { position: relative; padding: 10px 0 0; line-height: 22px; }
+.localinfo_container .text::after, .moreInfo_content li .text::after { content: ""; position: absolute; top: 0; left: 50%; width: 80px; height: 1px; margin: 0 0 0 -40px; background: #fff; }
+.moreInfo_content li .text::after { background: #aeaeae; }
+.localinfo_logo { position: absolute; bottom: 40px; left: 0; width: 100%; color: #fff; }
+.localinfo_logo .ora-logo { width: 56px; margin: 0 auto; }
+.intro_tourexplain { position: relative; width: 45%; float: right; min-height: 500px; margin: 80px auto 0 5%; padding: 0 0 60px; }
+.tourexplain_title { margin: 0 0 20px; min-height: 0; }
+.tourexplain_title .titleText::before { content: ""; position: absolute; bottom: -6px; left: 40px; width: 1px; height: 40px; background: #000; }
+.intro_tourexplain .paragraph { color: #717171; padding: 20px 0; font: 400 13px/22px var(--f-han); }
+.intro_tourexplain .desc { position: absolute; bottom: 20px; font-size: 12px; line-height: 22px; color: #b1b1b1; }
+.intro_moreInfo { position: relative; top: -60px; clear: both; width: 100%; display: block; text-align: right; margin: 0 auto 10px; }
+.linkContent_wrap { position: relative; display: inline-block; padding: 5px; background: #f2f2f2; text-align: left; }
+.moreInfo_content { width: 480px; padding: 0 20px 20px; margin: 0 0 0 60px; text-align: center; }
+.moreInfo_title { color: #717171; font: 300 15px/50px var(--f-han); text-align: left; border-bottom: 1px solid #d9d9d9; }
+.tabsMenu, .tabBox { display: none; }
+.tabsMenu.open, .tabBox.open { display: block; }
+.moreInfo_content ul { padding: 20px 0 0; }
+.moreInfo_content li { position: relative; float: left; width: 33.3%; padding: 20px 0; color: #009bdf; font: 300 14px/22px var(--f-han); }
+.moreInfo_content li > button { position: absolute; inset: 0; width: 100%; z-index: 9; }
+.moreInfo_content li:hover::before { content: ""; position: absolute; top: 10px; right: 25px; bottom: 10px; left: 25px; border: 2px solid #d0d0d0; background: rgba(255, 255, 255, .5); }
+.moreInfo_content li > div { position: relative; z-index: 1; }
+.moreInfo_content li .icon svg { width: 30px; height: 30px; color: #009bdf; }
+.tabBoxTitle { position: relative; color: #717171; line-height: 50px; text-align: left; border-bottom: 1px solid #d9d9d9; }
+.tabBoxTitle > svg { width: 22px; height: 22px; color: #009bdf; vertical-align: middle; }
+.tabBoxTitle .moreInfo_T { position: relative; padding: 0 0 0 30px; color: #000; font: 600 15px/50px var(--f-han); vertical-align: middle; }
+.tabBoxTitle .moreInfo_T::before { content: ""; position: absolute; top: -5px; bottom: -5px; left: 15px; width: 1px; background: #000; }
+.tabBoxTitle .close { position: absolute; top: 15px; right: 10px; width: 20px; height: 20px; color: #000; }
+.tabBoxTitle .close svg { width: 16px; height: 16px; display: block; margin: auto; }
+.tabBoxContent { padding: 20px 0; color: #717171; font: 400 13px/22px var(--f-han); text-align: left; }
+.tabBoxContent .noticeTitle { color: #009bdf; font-size: 18px; font-weight: 400; padding: 20px 0; }
+.tabBoxContent .mainBox p { padding: 0; }
+.tabBoxContent .box { padding: 20px 0; }
+.flight { width: 100%; border-collapse: collapse; background: #fff; font-size: 12px; line-height: 16px; text-align: center; color: #000; }
+.flight th { padding: 8px 2px; color: #fff; background: #009bdf; font-weight: 600; }
+.flight td { padding: 5px 2px; border: 1px solid #009bdf; }
+.routemap { display: block; width: 100%; height: auto; margin: 0 0 10px; }
+.visaTitle_content { position: relative; width: 84%; margin: 80px auto 0; padding: 8%; color: #fff; background: #009bdf; font: 300 14px/24px var(--f-han); }
+.visaTitle_content .download { position: absolute; top: -60px; right: 20px; width: 116px; height: 116px; color: #000; font-size: 15px; text-align: center; line-height: 50px; background: #f8f8f8; border: 1px solid #d7d7d7; }
+.visaTitle_content .download > a { position: absolute; inset: 0; z-index: 1; }
+.visaTitle_content .downloadImg { position: relative; line-height: 60px; height: 60px; display: flex; align-items: center; justify-content: center; }
+.visaTitle_content .downloadImg svg { width: 32px; height: 32px; color: #009bdf; }
+.visaTitle_content .downloadImg::after { content: ""; position: absolute; bottom: 0; left: 15%; right: 15%; border-bottom: 1px solid #d7d7d7; }
+.visaTitle_content .downloadText { line-height: 54px; }
+.visaTitle_content .download:hover { background: #fff; }
+.visaTitle_content .soon-note { padding: 0 130px 10px 0; }
+/* mobile: tab content opens as a modal */
+.linkContent_wrap.openMobile .tabBox { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0, 0, 0, .5); z-index: 99; }
+.linkContent_wrap.openMobile .tabBox.open { display: flex; }
+.linkContent_wrap.openMobile .tabBox .conBox { position: relative; background: #f2f2f2; margin: 10px; max-height: 480px; overflow: auto; overflow-x: hidden; }
+.linkContent_wrap.openMobile .tabBoxTitle { margin: 0 20px; }
+.linkContent_wrap.openMobile .tabBoxContent { padding: 20px; }
+.linkContent_wrap.openMobile .visaTitle_content { padding: 14% 8% 8%; }
+
+/* ------------------------------------------------------------------ related tours / CTA */
+.introduceBoxFt::after { content: ""; display: table; clear: both; }
+.introduceBoxFt .tourTitle { text-align: center; margin: 40px 0; color: #009bdf; font: 600 24px/30px var(--f-han); }
+.tourTitle span { position: relative; }
+.tourTitle span::before, .tourTitle span::after { content: ""; position: absolute; top: 50%; width: 65px; height: 1px; background: #000; }
+.tourTitle span::before { left: -95px; }
+.tourTitle span::after { right: -95px; }
+.tourChose ul::after { content: ""; display: table; clear: both; }
+.tourChose li { position: relative; display: block; width: 33%; float: left; overflow: hidden; }
+.tourChose li.sizeL { width: 100%; }
+.tourChose li > a { position: absolute; inset: 0; z-index: 3; }
+.tourChose .newsMask, .travelListBox .newsMask, .attractionPhoto .newsMask { position: absolute; height: 170px; right: 0; bottom: 0; left: 0; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .55)); z-index: 1; }
+.tourChose .photo { position: relative; width: 100%; padding-bottom: 68%; background-size: cover; background-position: center; transition: transform 400ms ease; }
+.tourChose li.sizeL .photo { padding-bottom: 25%; }
+.tourChose li:hover .photo { transform: scale(1.1); }
+.tourChose .photo::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0); z-index: 1; transition: background 300ms; }
+.tourChose li.related .photo::after { background: rgba(0, 0, 0, .4); }
+.tourChose li.related:hover .photo::after { background: rgba(0, 0, 0, 0); }
+.tourChose .innerBoxFt { position: absolute; width: 100%; bottom: 0; left: 0; text-align: center; z-index: 2; }
+.tourChose .boxComplex { width: 80%; max-width: 240px; margin: 0 auto; color: #fff; font: 200 22px/22px var(--f-han); }
+.tourChose .boxComplex > span { position: relative; display: inline-block; min-width: 140px; padding: 0 0 30px; }
+.tourChose .boxComplex .title { display: inline-block; transform: translateY(-27px); transition: all 400ms ease; }
+.tourChose li.related .boxComplex .title { transform: translateY(0); }
+.tourChose li.related:hover .boxComplex .title { transform: translateY(-27px); }
+.tourChose .boxComplex .day { position: absolute; bottom: 0; left: -20px; right: -20px; color: #000; background: #fff; font: 400 13px/22px var(--f-body); }
+.tourChose .dateOut { position: absolute; left: -20px; right: -20px; bottom: 0; height: 52px; overflow: hidden; }
+.tourChose .dateOut .date { position: relative; height: 52px; color: #fff; background: #009bdf; font: 300 15px/52px var(--f-han); transform: translateY(0); transition: all 400ms ease; }
+.tourChose li.related .dateOut .date { transform: translateY(52px); }
+.tourChose li.related:hover .dateOut .date { transform: translateY(0); }
+.tourChose .money, .travelListBox .money { height: 50px; border-top: 1px solid rgba(255, 255, 255, .5); }
+.page-itin .introduceBoxFt { margin-top: 0; }
+.goExperience { padding: 40px 0; background: #fff; }
+.goExperience_Wrap { width: 80%; padding: 60px 0; margin: 0 auto; text-align: center; }
+.goExperience .experienceSub { margin: 0 0 10px; font: 300 20px/24px var(--f-han); color: var(--theme); }
+.goExperience .experienceTitle { position: relative; margin: 0 0 40px; font: 200 25px/25px var(--f-han); }
+.goExperience .experienceTitle::after { content: ""; position: absolute; bottom: -10px; left: 50%; width: 154px; height: 1px; margin: 0 0 0 -77px; background: var(--theme); }
+.experienceBtn { max-width: 750px; height: 72px; padding: 6px; margin: 0 auto; box-sizing: border-box; }
+.experienceBtn .join, .experienceBtn .other { position: relative; display: inline-block; vertical-align: middle; width: 47%; margin: 0 1%; box-sizing: border-box; }
+.experienceBtn a, .experienceBtn button, .goExperience_Wrap > .other a { display: block; width: 100%; font: 600 17px/55px var(--f-han); color: #fff; background: rgba(145, 145, 145, 1); transition: background-color 200ms var(--ease-in); }
+.experienceBtn .join a { background: rgba(var(--theme-rgb), 1); }
+.experienceBtn a:hover, .experienceBtn button:hover { color: #fff; background: rgba(145, 145, 145, .8); }
+.experienceBtn .join a:hover { background: rgba(var(--theme-rgb), .8); }
+.goExperience_Wrap > .other { width: 280px; margin: 0 auto; }
+.goExperience_Wrap > .other a { font-weight: 300; background: rgba(var(--theme-rgb), 1); }
+.goExperience_Wrap > .other a:hover { color: #fff; background: rgba(var(--theme-rgb), .8); }
+.xlinks { margin: 0; text-align: center; font-size: 12px; line-height: 18px; }
+.xlinks a { color: #1f3fd1; }
+.xlinks a:hover { color: #009bdf; }
+.page-country .goExperience { padding: 20px 0 40px; }
+
+/* ------------------------------------------------------------------ itinerary: sequence hero */
+.seqComplex { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #fff; }
+.seqBoxComplex { position: relative; height: 100%; background: var(--theme); touch-action: pan-y; }
+.seq-canvas, .seq-canvas > li { width: 100%; height: 100%; }
+.seq-canvas > li { position: absolute; top: 0; left: 0; z-index: 1; }
+.seq-canvas > li.seq-in { z-index: 3; }
+.seq-canvas > li.seq-out { z-index: 2; }
+.seqComplex .monitor { position: absolute; inset: 0; }
+.seq-in .monitor { opacity: 1; transition: opacity 2s; }
+.seq-out .monitor { opacity: .5; transition: opacity .3s; }
+.monitorImg { position: absolute; bottom: 0; left: 0; right: 0; height: 0; background-size: cover; background-position: center; background-attachment: fixed; }
+.seq-in .monitorImg, .ip-seq.show .monitorImg { height: 100%; transition: height .5s 1s; }
+.seq-out .monitorImg { height: 0; transition: height .1s 1.8s; }
+.seq-in .goTextA { opacity: 1; transition: opacity .2s; }
+.seq-out .goTextA { opacity: 0; transition: opacity .2s; }
+.seqComplex .seqTitle { position: absolute; bottom: -200px; left: 25%; right: 25%; text-align: center; color: #fff; z-index: 10; }
+.seqComplex .seqTitle.start { bottom: 60px; transition: bottom .5s 2s; }
+.seqComplex .seqTitle .titleBox::after { width: 0; }
+.seqComplex .seqTitle.start .titleBox::after { width: 100%; transition: width .5s 2.5s; }
+.seqComplex .seqTitle .subTitle { top: auto; bottom: 102%; }
+.seqComplex .seqTitle .mainTitle span { max-height: 64px; overflow: hidden; }
+.seq-prev, .seq-next { position: absolute; top: 50%; width: 50px; height: 25px; margin-top: -20px; color: #fff; z-index: 7; }
+.seq-prev { left: -50px; }
+.seq-next { right: -50px; }
+.seq-prev .ic-thin, .seq-next .ic-thin { width: 13px; height: 25px; transition: transform 400ms var(--ease-out); }
+.seq-prev:hover .ic-thin { transform: translateX(-18px); }
+.seq-next:hover .ic-thin { transform: translateX(18px); }
+.seqNews2 { position: absolute; height: 10px; bottom: 60px; left: 0; right: 0; color: #fff; z-index: 10; }
+.seqNews2 .seqLine { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: #fff; opacity: .5; }
+.seqNews2 .scrollDown { bottom: -40px; }
+.seqComplex .seqMask { z-index: 4; }
+.seqComplex .seqStartBg { z-index: 5; }
+.seqComplex .seqStartBg.open { bottom: 100%; opacity: .8; transition: bottom 600ms 1000ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 600ms linear; }
+
+/* itinerary band + rotating headline */
+.touristTitle { margin: 0 auto; padding: 160px 20px 140px; color: #fff; text-align: center; background: var(--theme); }
+.touristTitle .titleWrap { width: 560px; margin: 0 auto; }
+.touristTitle .info { font: 200 32px/34px var(--f-han); }
+.touristTitle .content { margin: 10px 0 0; font: 200 22px/26px var(--f-han); }
+.box-headline { margin: 15px 0 0; font: 700 48px/48px Arial, var(--f-han); }
+.box-words-wrapper { display: inline-block; position: relative; perspective: 300px; text-align: left; }
+.box-words-wrapper b { display: inline-block; position: absolute; left: 0; top: 0; white-space: nowrap; font-weight: 700; }
+.box-words-wrapper b.is-visible { position: relative; }
+.box-words-wrapper i, .box-words-wrapper em { font-style: normal; display: inline-block; backface-visibility: hidden; }
+.box-words-wrapper i { transform-style: preserve-3d; transform: translateZ(-20px) rotateX(90deg); opacity: 0; }
+.box-words-wrapper b.is-visible i { opacity: 1; transform: translateZ(-20px) rotateX(0); }
+.box-words-wrapper i.in { animation: boxRotIn .4s forwards; }
+.box-words-wrapper i.out { animation: boxRotOut .4s forwards; }
+.box-words-wrapper em { transform: translateZ(20px); }
+@keyframes boxRotIn { 0% { opacity: 0; transform: translateZ(-20px) rotateX(90deg); } 60% { opacity: 1; transform: translateZ(-20px) rotateX(-10deg); } 100% { opacity: 1; transform: translateZ(-20px) rotateX(0); } }
+@keyframes boxRotOut { 0% { opacity: 1; transform: translateZ(-20px) rotateX(0); } 60% { opacity: 0; transform: translateZ(-20px) rotateX(-100deg); } 100% { opacity: 0; transform: translateZ(-20px) rotateX(-90deg); } }
+.routeLine { margin: 14px 0 0; font: 300 14px/22px var(--f-han); color: rgba(255, 255, 255, .9); }
+.routeLine li { display: inline-block; }
+.routeLine li + li::before { content: "→"; padding: 0 8px; opacity: .7; }
+
+/* day blocks */
+.hotelFeature .featureImg { width: 100%; padding-bottom: 60%; background-size: cover; background-attachment: fixed; background-position: center; }
+.hotelFeature .featureContent { width: 100%; margin: 0 auto; background: #fff; }
+.featureContentBox { position: relative; width: 80%; margin: 0 auto; }
+.featureSquare { position: absolute; top: 0; width: 300px; height: 300px; box-sizing: border-box; color: #fff; background: var(--theme); font: 200 33px/33px var(--f-han); opacity: 0; transition: all 600ms var(--ease-out); z-index: 2; }
+.featureContent.elementMobile .featureSquare { top: -200px; opacity: 1; }
+.featureSquareBox { position: absolute; left: 30px; bottom: 30px; right: 30px; }
+.featureSquare span { display: block; font-size: 33px; line-height: 33px; }
+.featureSquare .day { padding: 30px; font-size: 33px; line-height: 33px; }
+.featureArticle { width: 80%; margin: 0 auto; padding: 160px 0 100px; }
+.featureArticle::after { content: ""; display: table; clear: both; }
+.artileContent { color: #717171; font: 400 13.5px/28px var(--f-han); }
+.artileContent .itineraryTitle { color: #222; font: 200 33px/45px var(--f-han); }
+.artileContent .itineraryTitle span { padding: 0 10px; color: var(--theme); font-weight: 300; }
+.artileContent b { color: var(--theme); font-weight: 300; }
+.artileContent p { padding: 20px 0; }
+.itineraryOther { position: relative; margin: 60px 0 0; }
+.itineraryOther.has-remind { padding-bottom: 150px; }
+.itineraryOther .otherBox { display: inline-block; vertical-align: top; width: 50%; min-width: 420px; margin: 0 -2px 0 0; padding: 0 20px 40px 0; box-sizing: border-box; font: 300 15px/24px var(--f-han); opacity: 0; }
+.itineraryOther.element .otherBox { opacity: 1; transition: opacity 600ms ease; }
+.itineraryOther.element .otherBox:nth-child(2) { transition-delay: 400ms; }
+.otherBox .icon, .otherBox .conBox { display: table-cell; vertical-align: top; }
+.otherBox .icon { padding: 0 10px 0 0; color: var(--theme); }
+.otherBox .icon svg { width: 58px; height: 58px; display: block; }
+.otherBox p { line-height: 28px; color: #717171; }
+.otherBox h3 { font-weight: 400; color: var(--theme); }
+.remindBox { position: absolute; right: 0; bottom: -30px; width: 480px; background: #f3f3f3; }
+.remindBox h3 { position: relative; padding: 15px 0; font: 600 15px/38px var(--f-han); }
+.remindBox h3::before { content: ""; position: absolute; left: 15px; right: 15px; bottom: 0; border-bottom: 1px solid #d9d9d9; }
+.remindBox h3 .icon { float: left; padding: 0 15px; margin: 0 15px 0 0; line-height: 38px; border-left: 5px solid var(--theme); border-right: 1px solid #a2a2a2; color: var(--theme); }
+.remindBox h3 .icon svg { width: 24px; height: 24px; }
+.remindBox .conBoxBd { min-height: 180px; padding: 40px; color: #717171; font: 300 15px/24px var(--f-han); display: flex; align-items: center; box-sizing: border-box; }
+.reserveBtn { position: relative; width: 280px; height: 60px; margin: -40px auto 100px; line-height: 60px; z-index: 1; text-align: center; }
+.reserveBtn a { display: block; color: #fff; font: 200 22px/60px var(--f-han); background: rgba(145, 145, 145, 1); transition: background-color 200ms var(--ease-in); }
+.reserveBtn a:hover { color: #fff; background: rgba(145, 145, 145, .8); }
+.reserveBtn .soon-note { color: #717171; line-height: 22px; padding: 6px 0 0; }
+
+/* ------------------------------------------------------------------ list pages */
+.travelList { position: relative; margin: 0 auto; padding: 0 10px 10px; background: #fff; }
+.travelList::after { content: ""; display: table; clear: both; }
+.travelList .headline { position: relative; height: 350px; margin: 90px auto 0; text-align: center; }
+.travelList .headlineBox { position: absolute; left: 10%; right: 10%; top: 0; bottom: 0; width: 80%; max-width: 760px; height: 140px; margin: auto; }
+.travelList .boxTitle { position: relative; z-index: 2; font: 300 32px/32px var(--f-han); }
+.travelList .boxImg { position: relative; height: 64px; margin: 8px 0 0; z-index: 2; }
+.travelList .boxImg .word { display: inline-block; color: var(--theme); font: 700 80px/64px var(--f-han); letter-spacing: -1px; transform: scaleX(.86); }
+.travelList .prop { position: absolute; z-index: 3; pointer-events: none; }
+.prop-place { left: 50%; top: -38px; width: 260px; margin-left: 82px; }
+.prop-hotel { left: 50%; top: -63px; width: 130px; margin-left: 87px; }
+.prop-restaurant { left: 50%; top: -33px; width: 320px; margin-left: 54px; }
+.travelList .boxContent { position: relative; z-index: 1; margin: 4px 0 0; letter-spacing: .5px; color: #bebebe; font: 200 32px/36px var(--f-han); }
+.travelListBox { width: 100%; padding: 5px; background: #fff; box-sizing: border-box; }
+.travelListBox ul::after { content: ""; display: table; clear: both; }
+.travelListBox li { position: relative; float: left; width: 50%; padding-bottom: 25.01%; box-sizing: border-box; overflow: hidden; }
+.travelListBox li.sizeM { width: 50%; padding-bottom: 25.01%; }
+.travelListBox li.sizeS { width: 25%; padding-bottom: 25%; }
+.travelListBox li.sizeF { width: 100%; padding-bottom: 25%; }
+.travelListBox li > a { position: absolute; inset: 0; z-index: 2; }
+.travelListBox .innerBox { position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px; overflow: hidden; z-index: 1; }
+.travelListBox .innerBox::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .4); z-index: 1; transition: background 300ms; }
+.travelListBox li:hover .innerBox::after { background: rgba(0, 0, 0, 0); }
+.travelListBox .photo { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 400ms ease; }
+.travelListBox li:hover .photo { transform: scale(1.1); }
+.travelListBox .innerBoxFt { position: absolute; width: 100%; bottom: 0; left: 0; text-align: center; z-index: 2; }
+.travelListBox .boxComplex, .attractionPhoto .boxComplex { width: 80%; max-width: 240px; margin: 0 auto; color: #fff; }
+.travelListBox .boxComplex > span { position: relative; display: inline-block; min-width: 180px; padding: 0 0 30px; }
+.travelListBox .boxComplex .title { display: inline-block; font: 200 22px/26px var(--f-han); }
+.travelListBox .boxComplex .day { position: absolute; bottom: 0; left: -20px; right: -20px; color: #000; background: #fff; font: 400 13px/22px var(--f-body); transition: all 400ms ease; }
+.travelListBox .boxComplex .title { transition: transform 400ms ease; }
+.travelListBox li:hover .boxComplex .title { transform: translateY(-27px); }
+.travelListBox li:hover .boxComplex .day { line-height: 50px; }
+.travelListBox .emptyNote { padding: 10px 20px 30px; text-align: center; color: #999; font: 300 18px/28px var(--f-han); }
+.travelListBox .emptyNote a { color: var(--theme); border-bottom: 1px solid var(--theme); }
+.loadMore { padding: 50px 0; text-align: center; }
+.loadMore button { color: var(--theme); font-size: 13px; }
+.loadMore span { border-bottom: 1px solid var(--theme); }
+
+/* item detail popup (designed from introduce.css .attractionPage / .hotelIntro / .aboutAttraction / .attractionPhoto) */
+html.ip-lock { overflow: hidden; }
+.itemPop { position: fixed; inset: 0; z-index: 30; background: #fff; opacity: 0; transition: opacity 400ms linear; }
+.itemPop.vis { opacity: 1; }
+.ip-scroll { position: absolute; inset: 0; overflow: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+.ip-x { position: fixed; top: 20px; right: 20px; width: 50px; height: 50px; color: #fff; background: rgba(0, 0, 0, .35); z-index: 40; border-radius: 50%; transition: background 200ms; }
+.ip-x:hover { background: var(--theme); }
+.ip-x svg { width: 20px; height: 20px; display: block; margin: auto; }
+.ip-seq .seqStartBg.open { bottom: 100%; opacity: .8; transition: bottom 600ms 1000ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 600ms linear; }
+.ip-seq > .seqBoxComplex > .goTextA { z-index: 1; }
+.ip-seq .monitor { z-index: 2; }
+.ip-body .touristTitle.inner { padding: 0; background: none; }
+.ip-body > .touristTitle { padding: 120px 20px; }
+.hotelIntro { position: relative; margin: 0 auto; background: #fff; }
+.hotelIntro .introImg { width: 50%; padding-bottom: 28%; background-size: cover; background-position: center; }
+.hotelIntro .touristTitle { position: absolute; top: 0; left: 50%; right: 0; bottom: 0; padding: 0; display: flex; align-items: center; justify-content: center; }
+.hotelIntro .titleWrap { width: auto; padding: 0 20px; }
+.ip-body .box-headline { font-size: 44px; line-height: 50px; }
+.attractionPage { position: relative; margin: 0 auto; background: #fff; }
+.attractionPage .pageImg { position: relative; width: 50%; padding-bottom: 50%; background-size: cover; background-position: center; opacity: 0; }
+.attractionPage.element .pageImg { animation: introImgOpacity 1.8s linear forwards; }
+@keyframes introImgOpacity { 0% { opacity: 0; } 100% { opacity: 1; } }
+.attractionPage .pageTxt { position: absolute; top: 0; left: 50%; right: 0; bottom: 0; z-index: 3; }
+.attractionPage .pageTxt_wrap { position: relative; width: 100%; height: 100%; background: #fff; }
+.attractionPage .topRightIcon { position: absolute; top: 30px; right: 30px; color: var(--theme); }
+.attractionPage .topRightIcon button { display: block; width: 27px; height: 27px; color: var(--theme); }
+.attractionPage .topRightIcon svg { width: 27px; height: 27px; display: block; }
+.attractionPage .topRightIcon_Txt { position: absolute; left: 50%; top: 30px; width: 80px; margin: 0 0 0 -40px; text-align: center; color: var(--theme); font-size: 12px; opacity: 0; transition: opacity 400ms ease; }
+.attractionPage .topRightIcon:hover .topRightIcon_Txt { opacity: 1; }
+.attractionPage .maincontent { position: absolute; inset: 0; width: 360px; height: 240px; padding: 0 20px; margin: auto; box-sizing: border-box; display: flex; align-items: center; justify-content: center; }
+.attractionPage .lineOne { display: block; color: #646464; font: 200 32px/34px var(--f-han); max-height: 68px; overflow: hidden; }
+.attractionPage .lineTwo { display: block; margin: 4px 0 0; color: #a6a6a6; font: 300 36px/36px var(--f-yan); max-height: 72px; overflow: hidden; }
+.attractionPage .describe { margin-top: 40px; color: #636363; font: 300 14px/24px var(--f-han); max-height: 240px; overflow: hidden; }
+.attractionPage .pageNotice { position: absolute; bottom: 30px; left: 30px; right: 30px; display: table; font-size: 12px; line-height: 16px; color: #656565; }
+.attractionPage .pageNotice > div { display: table-cell; vertical-align: top; }
+.attractionPage .pageNotice .icon { width: 50px; color: var(--theme); }
+.attractionPage .pageNotice .icon svg { width: 25px; height: 25px; }
+.attractionPage .pageNotice span { color: var(--theme); }
+.aboutAttraction { padding: 100px 0; background: #fbfbfb; }
+.aboutWrap { width: 70%; margin: 0 auto; text-align: center; font-family: var(--f-yan); font-weight: 300; }
+.aboutWrap .aboutTitle { position: relative; padding: 0 0 65px; color: #000; font-size: 26px; line-height: 32px; }
+.aboutWrap .aboutTitle::after { content: ""; position: absolute; left: 50%; top: 42px; width: 150px; margin-left: -75px; height: 1px; background: var(--theme); }
+.aboutWrap li { position: relative; float: left; width: 33.333%; }
+.aboutWrap .number { color: var(--theme); font: 700 60px/100px var(--f-yan); }
+.aboutWrap li span { display: block; color: #000; font: 300 18px/20px var(--f-han); }
+.aboutWrap li::after { content: ""; position: absolute; top: 0; right: 0; height: 131px; border-right: 3px solid #e7e7e7; }
+.aboutWrap li:last-child::after { border-right: 0; }
+.hotelInfo { padding: 60px 0; color: #fff; background: var(--theme); }
+.hotelInfoBox { width: 64%; margin: 0 auto; }
+.hotelInfoBox h3 { margin-bottom: 40px; font: 400 18px/22px var(--f-han); }
+.hotelInfoBox p { font: 400 13.5px/24px var(--f-han); }
+.restaurantInfo { color: #fff; background: var(--theme); }
+.restaurantInfoBox { position: relative; margin: 0 auto; padding: 30px 0; text-align: center; font-size: 0; }
+.restaurantInfoBox::before { content: ""; position: absolute; left: 50%; top: 50px; bottom: 50px; width: 2px; margin: 0 0 0 -1px; background: #ca6a49; }
+.restaurantInfoBox li { position: relative; display: inline-block; width: 41%; height: 260px; margin: 0 4%; }
+.restaurantInfoBox h3 { position: absolute; left: 20px; top: 20px; font: 400 18px/18px var(--f-han); }
+.restaurantInfoBox .infoTxt { position: absolute; inset: 0; padding: 20px 0 0; display: flex; align-items: center; justify-content: center; }
+.restaurantInfoBox .infoTxt span { font: 200 36px/44px var(--f-han); max-height: 88px; overflow: hidden; opacity: 0; transition: opacity 600ms ease; }
+.restaurantInfo.element .infoTxt span { opacity: 1; }
+.restaurantInfo.element li:nth-child(2) .infoTxt span { transition-delay: 800ms; }
+.attractionPhoto li { position: relative; float: left; width: 33.33%; overflow: hidden; }
+.attractionPhoto li > button { position: absolute; inset: 0; width: 100%; z-index: 3; }
+.attractionPhoto .photo { position: relative; width: 100%; padding-bottom: 68%; background-size: cover; background-position: center; transition: transform 400ms ease; }
+.attractionPhoto li:hover .photo { transform: scale(1.1); }
+.attractionPhoto .photo::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .4); z-index: 1; transition: background 300ms; }
+.attractionPhoto li:hover .photo::after { background: rgba(0, 0, 0, 0); }
+.attractionPhoto .innerBoxFt { position: absolute; width: 100%; bottom: 53px; left: 0; text-align: center; z-index: 2; border-bottom: 1px solid rgba(255, 255, 255, .5); }
+.attractionPhoto .boxComplex > span { position: relative; display: inline-block; min-width: 140px; padding: 0 0 30px; }
+.attractionPhoto .title { display: inline-block; font: 200 22px/26px var(--f-han); }
+.attractionPhoto .country { position: absolute; bottom: 0; left: -20px; right: -20px; color: #000; background: #fff; font: 400 13px/22px var(--f-body); }
+.itemPop .goExperience_Wrap .experienceTitle::after { background: var(--theme); }
+
+/* ------------------------------------------------------------------ responsive */
+@media (max-width: 1400px) {
+  .introMenu ul li { margin: 10px 15px; }
+  .introMenu .share { padding: 20px 15px; }
+  .introduceMenu_Wrap { height: auto; }
+}
+@media (max-width: 1360px) {
+  .travelListBox li.sizeM, .travelListBox li.sizeS { width: 50%; padding-bottom: 50%; }
+  .travelListBox li.sizeF { padding-bottom: 50%; }
+  .itineraryOther .otherBox { display: block; width: 100%; margin: 0; }
+  .itineraryOther.has-remind { padding-bottom: 0; }
+  .remindBox { position: relative; right: auto; bottom: auto; width: auto; }
+  .remindBox .conBoxBd { min-height: 100px; padding: 20px 40px; }
+}
+@media (max-width: 1260px) { .introduceMenu_Wrap .introMenu { margin: 0; width: 230px; } }
+@media (max-width: 1200px) {
+  .localInfo { float: none; width: 100%; }
+  .intro_tourexplain { width: 100%; float: none; min-height: 0; margin: 80px auto; height: auto !important; }
+  .intro_tourexplain .desc { position: relative; bottom: auto; }
+  .intro_moreInfo { top: 0; }
+  .linkContent_wrap { display: block; }
+  .moreInfo_content { width: auto; margin: 0; }
+  .moreInfo_title, .tabBoxTitle { margin: 0 20px; }
+}
+@media (max-width: 1080px) {
+  .introduceMenu { height: 134px; padding: 0; }
+  .introduceMenu_Wrap .introMenu { width: 420px; }
+  .introMenu .share { padding: 10px 15px; }
+  .travelList .headline { margin-top: 104px; }
+}
+@media (max-width: 960px) {
+  .featureShowBox { width: 100%; }
+  .contentTitle .mainTitle { font-size: 28px; line-height: 30px; }
+  .contentTitle .subTitle { font-size: 32px; line-height: 32px; }
+  .featureShowPhoto_slogan { font-size: 36px; line-height: 40px; margin: -40px 0 0; }
+  .attractionPage .lineOne { font-size: 26px; line-height: 30px; max-height: 60px; }
+  .attractionPage .lineTwo { font-size: 28px; line-height: 28px; max-height: 56px; }
+  .attractionPage .describe { margin-top: 20px; }
+  .restaurantInfoBox li { height: 160px; }
+  .restaurantInfoBox .infoTxt span { font-size: 24px; line-height: 30px; max-height: 60px; }
+}
+@media (max-width: 840px) {
+  .introduceInfoBox { padding-top: 120px; }
+  .seqComplex .seqTitle { left: 22%; right: 23%; }
+  .featureSquare { width: 240px; height: 240px; font-size: 28px; line-height: 30px; }
+  .featureContent.elementMobile .featureSquare { top: -140px; }
+  .featureSquare .day { padding: 20px; }
+  .featureSquareBox { left: 20px; bottom: 20px; right: 20px; }
+  .featureSquare span { font-size: 26px; line-height: 26px; }
+  .attractionPage .maincontent { width: 330px; }
+}
+@media (max-width: 767px) {
+  .bannerBox, .featureShowPhoto, .monitorImg, .hotelFeature .featureImg { background-attachment: scroll; }
+  .planMaxBox { top: 10px; right: 10px; width: 128px; height: 40px; padding: 3px 0 0 40px; }
+  .planMaxBox .pm-ic { top: 5px; left: 5px; width: 28px; height: 28px; }
+  .planMaxBox .pm-ic svg { width: 16px; height: 16px; }
+  .planMaxBox .subTitle { font-size: 13px; line-height: 18px; }
+  .planMaxBox .mainTitle { font-size: 13px; line-height: 16px; }
+  .planMaxBox::after { border-width: 0 12px 12px 0; }
+  .bannerTitle .seqTitle { left: 10%; right: 10%; }
+  .bannerTitle .seqTitle .titleBox { padding: 0 10px 20px; }
+  .bannerTitle .seqTitle .subTitle { top: -25px; font-size: 13px; }
+  .bannerTitle .seqTitle .mainTitle { font-size: 20px; line-height: 22px; }
+  .bannerTitle .seqNews, .bannerTitle .seqNews .seqLine { left: 0; right: 0; }
+  .seqNews .natureBox { top: 10px; left: 10px; }
+  .seqNews .timeBox { top: 12px; right: 10px; }
+  .featureShowPhoto { display: none; }
+  .featureShowBox .photo, .featureShowBox .featureShowBox_content { width: 100%; padding-bottom: 100%; }
+  .featureShowBox .photo, .featureShow.element .photo { left: 0; opacity: 0; transition: all 400ms var(--ease-in); }
+  .featureShowBox .photo.elementMobile { opacity: 1; }
+  .featureShowBox .featureShowBox_content, .featureShow.element .featureShowBox_content { right: 0; }
+  .featureShow + .featureShow { margin-top: 0; }
+  .introduceMenu_Wrap { left: 200px; right: 0; }
+  .introduceMenu_Wrap .menuPush { display: block; width: auto; max-width: none; min-width: 0; }
+  .introduceInfoBox { margin: 40px auto 0; }
+  .intro_tourexplain { margin: 60px auto 30px; }
+  .introduceBoxFt .tourTitle { font-size: 18px; }
+  .tourChose li.related, .tourTitle span::before, .tourTitle span::after { display: none; }
+  .tourChose li.sizeL.related { display: block; }
+  .tourChose ul { padding: 0 10px; }
+  .tourChose li, .tourChose li.sizeL { width: auto; float: none; margin: 10px; }
+  .tourChose .photo, .tourChose li.sizeL .photo { padding-bottom: 100%; }
+  .tourChose li .boxComplex .title { transform: translateY(-27px); }
+  .tourChose li .dateOut .date, .tourChose li.related .dateOut .date { transform: translateY(0); }
+  .travelListBox li.sizeM, .travelListBox li.sizeS, .travelListBox li.sizeF { width: 100%; padding-bottom: 100%; }
+  .travelList .headlineBox { left: 0; right: 0; width: 100%; }
+  .seqComplex .seqTitle { left: 10%; right: 10%; }
+  .seq-prev:hover .ic-thin, .seq-next:hover .ic-thin { transform: none; }
+  .goTextA > div { width: 20%; padding-bottom: 43%; }
+  .featureSquare { width: 150px; height: 150px; font-size: 20px; line-height: 26px; }
+  .featureContent.elementMobile .featureSquare { top: -90px; }
+  .featureSquare .day { padding: 15px; }
+  .featureSquareBox { left: 15px; bottom: 15px; right: 15px; }
+  .featureSquare span { font-size: 18px; line-height: 18px; }
+  .artileContent .itineraryTitle { font-size: 24px; line-height: 30px; }
+  .itineraryOther .otherBox { min-width: 0; }
+  .featureArticle { width: 100%; padding: 100px 0 60px; }
+  .attractionPage .pageTxt, .attractionPage .pageImg { position: relative; left: 0; }
+  .attractionPage .pageImg { width: 100%; padding-bottom: 100%; opacity: 1; }
+  .attractionPage .pageTxt_wrap { height: auto; padding-bottom: 110%; }
+  .aboutWrap .aboutTitle { font-size: 33px; line-height: 47px; }
+  .aboutWrap li { float: none; width: 100%; margin-bottom: 56px; }
+  .aboutWrap li::after { top: auto; right: auto; bottom: -15px; left: 50%; margin-left: -75px; width: 150px; height: 0; border-right: 0; border-bottom: 3px solid #e7e7e7; }
+  .aboutWrap li:last-child::after { border-bottom: 0; }
+  .attractionPhoto ul { padding: 0 10px; }
+  .attractionPhoto li { width: auto; float: none; margin: 10px; }
+  .attractionPhoto .photo { padding-bottom: 100%; }
+  .hotelIntro .introImg { width: 100%; padding-bottom: 65%; }
+  .hotelIntro .touristTitle { position: relative; left: 0; padding: 120px 0; }
+  .hotelInfoBox { width: 80%; }
+  .restaurantInfoBox { padding: 0 30px; }
+  .restaurantInfoBox li { display: block; width: 100%; height: 180px; margin: 0; padding: 15px; box-sizing: border-box; }
+  .restaurantInfoBox::before { left: 30px; right: 30px; top: 50%; bottom: auto; width: auto; height: 2px; }
+  .restaurantInfoBox h3 { left: 0; top: 20px; }
+  .ip-x { top: auto; bottom: 16px; right: 16px; }
+}
+@media (max-width: 660px) {
+  .introduceMenu { height: 124px; }
+  .introduceMenu_Wrap .menuPush { height: 80px; }
+  .menuPush::before { left: -70px; border-width: 0 0 80px 70px; }
+  .menuPush::after { right: -70px; border-width: 80px 70px 0 0; }
+  .menuPushBox { height: 80px; }
+  .menuPush .nowprice { margin: 0 0 -5px; }
+  .menuPush .push_tourname { position: absolute; top: 0; left: 0; padding: 10px 10px 0 0; width: auto; height: 70px; font-size: 18px; line-height: 22px; display: flex; align-items: center; }
+  .menuPush .push_tourname.noBack { padding: 5px 10px 0 0; }
+  .menuPush .push_tourname samp { left: 0; }
+  .menuPush .push_price { position: absolute; top: 10px; left: 0; padding: 5px 0 0 20px; opacity: 0; }
+  .menuPush .push_price::after { display: none; }
+  /* name and price take turns in the narrow tab */
+  .menuPushBox:has(.push_price) .push_tourname { animation: mpName 8s infinite; }
+  .menuPushBox:has(.push_price) .push_price { animation: mpPrice 8s infinite; }
+  .localinfo_container { min-height: 400px; }
+}
+@keyframes mpName { 0%, 42% { opacity: 1; } 50%, 92% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes mpPrice { 0%, 42% { opacity: 0; } 50%, 92% { opacity: 1; } 100% { opacity: 0; } }
+@media (max-width: 640px) {
+  .travelList { padding: 0 0 30px; }
+  .travelList .headline { height: 240px; }
+  .travelList .headlineBox { height: 80px; }
+  .travelList .boxTitle { font-size: 22px; line-height: 22px; }
+  .travelList .boxContent { font-size: 18px; line-height: 22px; }
+  .introduce_content, .goExperience_Wrap { width: 90%; }
+  .goExperience .experienceTitle { font-size: 20px; }
+  .moreInfo_content { padding: 0 0 20px; }
+  .localinfo_container ul { width: 100%; margin: 0 auto 20px; }
+  .touristTitle { padding: 80px 20px; }
+  .touristTitle .titleWrap { width: auto; }
+  .touristTitle .content { font-size: 18px; }
+  .loadMore { padding: 20px 0 0; }
+}
+@media (max-width: 560px) {
+  .introduceBoxFt .tourTitle { font-size: 16px; }
+  .goExperience .experienceTitle { font-size: 18px; margin: 0 0 30px; }
+  .goExperience_Wrap { padding: 20px 0; }
+  .bannerTitle .seqTitle .subTitle { top: -24px; font-size: 13px; }
+  .bannerTitle .seqTitle .mainTitle, .seqComplex .seqTitle .mainTitle { font-size: 28px; line-height: 30px; }
+  .seqComplex .seqTitle .titleBox { padding: 0 10px 20px; }
+  .seqComplex .seqTitle .subTitle { font-size: 13px; }
+  .travelList .headline { height: 180px; }
+  .travelList .headlineBox { height: 60px; }
+  .introMenu ul li { margin: 10px 8px; }
+  .introduceMenu_Wrap .introMenu { width: 350px; text-align: right; display: table; }
+  .aboutAttraction { padding: 40px 0 20px; }
+  .aboutWrap .aboutTitle { padding: 0 0 40px; }
+  .aboutWrap .aboutTitle::after { top: 54px; }
+  .attractionPage .pageTxt_wrap { padding-bottom: 100%; }
+  .reserveBtn { margin: -40px auto 40px; }
+  .experienceBtn a, .experienceBtn button { font-size: 15px; }
+  .box-headline { font-size: 40px; line-height: 44px; }
+  .ip-body .box-headline { font-size: 32px; line-height: 40px; }
+}
+@media (max-width: 480px) {
+  .travelList .headline { height: 180px; margin-top: 94px; }
+  .travelList .headlineBox { height: 40px; }
+  .travelList .boxImg { height: 40px; margin-top: 6px; }
+  .travelList .boxImg .word { font-size: 46px; line-height: 40px; }
+  .prop-place { width: 150px; top: -26px; margin-left: 40px; }
+  .prop-hotel { width: 58px; top: -30px; margin-left: 30px; }
+  .prop-restaurant { width: 140px; top: -22px; margin-left: 40px; }
+  .attractionPage .lineOne { font-size: 26px; line-height: 26px; }
+  .attractionPage .lineTwo { font-size: 30px; line-height: 28px; }
+  .restaurantInfoBox li { height: 140px; }
+  .restaurantInfoBox .infoTxt span { font-size: 20px; line-height: 26px; }
+}
+@media (max-width: 400px) { .menuPush .push_price { padding: 5px 0 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .page-intro *, .page-intro *::before, .page-intro *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; transition-delay: 0ms !important; }
+}

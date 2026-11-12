@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 323" width="600" height="323">
+  <!-- ORA Travel: original flat illustration of a vintage 3-door safari 4x4 with luggage on the roof rack -->
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3ecd9"/>
+      <stop offset=".55" stop-color="#e3d7b8"/>
+      <stop offset="1" stop-color="#bfae88"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b9c4c6"/>
+      <stop offset="1" stop-color="#7f8b8e"/>
+    </linearGradient>
+    <radialGradient id="dust" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#5b4a37" stop-opacity=".75"/>
+      <stop offset=".7" stop-color="#7a6449" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#8a7356" stop-opacity="0"/>
+    </radialGradient>
+    <g id="wheel">
+      <circle r="50" fill="#262626"/>
+      <circle r="44" fill="none" stroke="#3a3a3a" stroke-width="5" stroke-dasharray="6 5"/>
+      <circle r="29" fill="#8f9193"/>
+      <circle r="29" fill="none" stroke="#5e6062" stroke-width="3"/>
+      <g stroke="#6b6d6f" stroke-width="4" stroke-linecap="round">
+        <path d="M0-24V24M-24 0H24M-17-17L17 17M17-17L-17 17"/>
+      </g>
+      <circle r="10" fill="#c6c8ca" stroke="#5e6062" stroke-width="2"/>
+    </g>
+  </defs>
+  <!-- ground shadow + dust -->
+  <ellipse cx="300" cy="296" rx="290" ry="22" fill="url(#dust)"/>
+  <ellipse cx="292" cy="290" rx="230" ry="9" fill="#3b3128" opacity=".55"/>
+  <g fill="#6d5a43" opacity=".7">
+    <circle cx="70" cy="300" r="5"/><circle cx="96" cy="306" r="3"/><circle cx="205" cy="304" r="4"/><circle cx="360" cy="306" r="3"/><circle cx="470" cy="303" r="5"/><circle cx="505" cy="309" r="3"/><circle cx="545" cy="300" r="4"/>
+  </g>
+
+  <!-- roof rack -->
+  <g stroke="#2d2d2d" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M226 78H478"/>
+    <path d="M238 78l-6 16M300 78v15M372 78v15M440 78v15M470 78l4 15"/>
+    <path d="M214 70c4 6 8 8 14 8"/>
+  </g>
+  <!-- luggage -->
+  <rect x="246" y="40" width="96" height="38" rx="9" fill="#d23a2c"/>
+  <rect x="246" y="40" width="96" height="12" rx="6" fill="#e5574a"/>
+  <path d="M276 40v38M314 40v38" stroke="#9f2a20" stroke-width="3"/>
+  <rect x="330" y="30" width="78" height="48" rx="10" fill="#f0b31c"/>
+  <rect x="330" y="30" width="78" height="14" rx="7" fill="#f7c94c"/>
+  <path d="M352 30v48M386 30v48" stroke="#c48a0f" stroke-width="3"/>
+  <rect x="396" y="52" width="58" height="26" rx="7" fill="#2f6f8f"/>
+  <path d="M402 60h46" stroke="#215269" stroke-width="3"/>
+
+  <!-- body -->
+  <path d="M42 196c0-14 8-24 22-26l124-14 42-62c4-6 10-8 17-8h236c10 0 16 6 17 15l6 70h8c8 0 12 6 12 13v66c0 8-6 12-14 12H476a52 52 0 0 0-104 0H192a52 52 0 0 0-104 0H54c-8 0-12-4-12-12z" fill="url(#body)" stroke="#8c7c5c" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- belt line + lower panel -->
+  <path d="M46 214H546" stroke="#a89771" stroke-width="2" opacity=".6"/>
+  <path d="M46 238h40M196 238h174M478 238h66" stroke="#9c8b67" stroke-width="10" opacity=".35"/>
+  <!-- windows -->
+  <path d="M200 158l38-56c3-4 6-5 10-5h82v61z" fill="url(#glass)" stroke="#5f5a4c" stroke-width="3"/>
+  <path d="M346 97h104c6 0 9 3 10 9l5 52H346z" fill="url(#glass)" stroke="#5f5a4c" stroke-width="3"/>
+  <path d="M214 150l30-44h20l-34 52z" fill="#fff" opacity=".35"/>
+  <path d="M360 106h20l-14 52h-20z" fill="#fff" opacity=".25"/>
+  <!-- little passenger: a dog looking out -->
+  <g transform="translate(296 118)">
+    <path d="M0 40V14c0-9 6-15 14-15s14 6 14 15v26z" fill="#f2efe6"/>
+    <path d="M2 6l-6-10 12 4zM26 6l6-10-12 4z" fill="#8a6a4a"/>
+    <circle cx="9" cy="12" r="2" fill="#222"/><circle cx="19" cy="12" r="2" fill="#222"/>
+    <ellipse cx="14" cy="20" rx="4" ry="3" fill="#222"/>
+  </g>
+  <!-- door -->
+  <path d="M198 160h138v84H210c-8 0-12-4-12-12z" fill="none" stroke="#8c7c5c" stroke-width="2.5"/>
+  <rect x="306" y="174" width="22" height="6" rx="3" fill="#5c5650"/>
+  <!-- mirror -->
+  <path d="M196 140h-14c-4 0-6 3-6 6v6h18z" fill="#3a3a3a"/>
+  <!-- front -->
+  <rect x="40" y="186" width="12" height="20" rx="3" fill="#ffd879" stroke="#8c7c5c" stroke-width="2"/>
+  <path d="M34 232h56v14H40c-4 0-6-2-6-6z" fill="#3c3c3c"/>
+  <path d="M60 176h40" stroke="#8c7c5c" stroke-width="2"/>
+  <!-- rear bumper + tail light -->
+  <path d="M530 232h28v14h-28z" fill="#3c3c3c"/>
+  <rect x="538" y="180" width="10" height="22" rx="2" fill="#c8402f"/>
+  <!-- spare wheel -->
+  <g transform="translate(560 168)">
+    <ellipse rx="20" ry="46" fill="#262626"/>
+    <ellipse cx="4" rx="11" ry="30" fill="#4a4a4a"/>
+    <ellipse cx="6" rx="5" ry="12" fill="#8f9193"/>
+  </g>
+  <!-- wheel arches -->
+  <path d="M84 244a56 56 0 0 1 112 0" fill="none" stroke="#6e6249" stroke-width="7"/>
+  <path d="M368 244a56 56 0 0 1 112 0" fill="none" stroke="#6e6249" stroke-width="7"/>
+  <!-- wheels -->
+  <use href="#wheel" x="140" y="248"/>
+  <use href="#wheel" x="424" y="248"/>
+  <!-- mud splashes -->
+  <g fill="#7a6247" opacity=".55">
+    <path d="M60 252c6-4 12-2 14 4-6 2-10 2-14-4zM498 250c6-4 14-2 14 6-6 0-10-2-14-6zM210 254c4-3 9-1 10 3-4 1-7 1-10-3z"/>
+  </g>
+</svg>
