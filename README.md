@@ -1,6 +1,6 @@
-# ORA Travel — rebuild HTML statis
+# ORA Travel — situs HTML statis
 
-Situs HTML/CSS/JS native yang meniru tata letak & perilaku referensi `ermtour.com.tw` 1:1, dengan brand,
+Situs HTML/CSS/JS native dengan brand,
 teks (Inggris), foto, logo, ilustrasi, dan kode buatan sendiri. Brand fiktif: **ORA Travel**.
 
 ## Cara membuka
@@ -31,7 +31,7 @@ assets/
   svg/                favicon, ilustrasi jip (about)
   fonts/              Source Sans 3, Yantramanav, Nunito (Google Fonts, OFL)
 ```
-Folder generator (`build/`), skrip riset (`clone-kit/`), `docs/`, dan folder `site/` sudah tidak ada di proyek ini;
+Folder generator (`build/`), `docs/`, dan folder `site/` sudah tidak ada di proyek ini;
 file HTML di root adalah sumber yang diedit langsung.
 
 ## Mengubah teks
@@ -55,14 +55,12 @@ perubahan pada bagian bersama harus diterapkan ke semua file (cari-ganti lintas 
   di `assets/js/form.js` (dan form subscribe di `main.js`).
 - Esc menutup semua modal/panel; `prefers-reduced-motion` dihormati.
 
-## Perbedaan yang disengaja / tidak bisa 1:1
-- Font referensi (Source Han Sans, CJK, Typekit) diganti **Source Sans 3** (glyph Latin-nya memang turunan Source
-  Sans); karena copy berbahasa Inggris, lebar dan pemenggalan baris sedikit berbeda, dan beberapa ukuran angka
-  disesuaikan agar tampak setara.
-- Logo, ilustrasi (kacamata, koper, jip, amplop, kaca pembesar, dll.) digambar ulang sebagai SVG sederhana.
-- Tombol unduh PDF/itinerary/visa mengarah ke `#` dengan catatan "Coming soon" (referensi memakai file asli).
+## Catatan teknis
+- Font **Source Sans 3**; karena copy berbahasa Inggris, lebar dan pemenggalan baris disesuaikan.
+- Logo dan ilustrasi (kacamata, koper, jip, amplop, kaca pembesar, dll.) berupa SVG sederhana buatan sendiri.
+- Tombol unduh PDF/itinerary/visa mengarah ke `#` dengan catatan "Coming soon".
 - Login korporat dan semua form hanya demo di sisi klien.
-- Halaman daftar atraksi/hotel/restoran di referensi kosong tanpa parameter; di sini menampilkan semua item.
+- Halaman daftar atraksi/hotel/restoran menampilkan semua item bila tanpa parameter.
 
 ## Placeholder yang perlu diganti
 Nama brand, email `hello@oratravel.example`, telepon/fax, alamat & nomor lisensi, kantor cabang, nama
