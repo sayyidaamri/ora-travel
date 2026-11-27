@@ -1,3 +1,5 @@
+![Preview](docs/preview/homepage.gif)
+
 # ORA Travel — situs HTML statis
 
 Situs HTML/CSS/JS native dengan brand,
